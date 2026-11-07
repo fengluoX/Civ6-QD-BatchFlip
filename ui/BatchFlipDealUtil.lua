@@ -86,7 +86,7 @@ function BatchFlipDealUtil.CloseSession(localID, otherID)
   end
 end
 
--- Close leftover MAKE_DEAL sessions / working deals so QD & BQD tabs
+-- Close leftover MAKE_DEAL sessions / working deals so QD tabs
 -- do not get stuck on "加载中" waiting for diplomacy responses.
 function BatchFlipDealUtil.CleanupDiplomacy()
   local localID = BatchFlipDealUtil.GetLocalPlayerID();

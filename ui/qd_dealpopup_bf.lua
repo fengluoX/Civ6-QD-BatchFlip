@@ -4,8 +4,7 @@ include("TabSupport");
 include("qd_utils");
 
 -- ===========================================================================
--- Quick Deals popup override: keep Sale/Purchase/Exchange + BQD Cycle + BatchFlip
--- LoadOrder must be higher than Better Quick Deal (100000).
+-- Quick Deals popup override: Sale/Purchase/Exchange + BatchFlip
 -- ===========================================================================
 local TAB_SIZE:number = 150;
 local TAB_PADDING:number = 8;
@@ -19,23 +18,9 @@ local m_NumOfTabs = 0;
 local m_SaleTabInstance:table = nil;
 local m_PurchaseTabInstance:table = nil;
 local m_ExchangeTabInstance:table = nil;
-local m_CycleTabInstance:table = nil;
 local m_BatchTabInstance:table = nil;
 
-local BQD_TAB_CYCLE = "TAB_BQD_CYCLE";
 local BF_TAB_BATCH = "TAB_BF_BATCH";
-
-local function HasBetterQuickDeal()
-    if Modding == nil or Modding.GetActiveMods == nil then
-        return false;
-    end
-    for _, mod in ipairs(Modding.GetActiveMods()) do
-        if tostring(mod.Id or "") == "f11a6a0d-2f36-4cf0-9f61-9d8a9d2d2a11" then
-            return true;
-        end
-    end
-    return false;
-end
 
 function Open()
     local localPlayer = Game.GetLocalPlayer();
@@ -89,12 +74,6 @@ function OnExchangeTabClick(uiSelectedButton:table)
     LuaEvents.QD_PopupShowTab(TAB_TYPE.EXCHANGE);
 end
 
-function OnCycleTabClick(uiSelectedButton:table)
-    ResetTabButtons();
-    SetTabButtonsSelected(uiSelectedButton);
-    LuaEvents.QD_PopupShowTab(BQD_TAB_CYCLE);
-end
-
 function OnBatchTabClick(uiSelectedButton:table)
     ResetTabButtons();
     SetTabButtonsSelected(uiSelectedButton);
@@ -124,9 +103,6 @@ function SetupTabs()
     m_SaleTabInstance = AddTabInstance("LOC_QD_SALE", OnSaleTabClick);
     m_PurchaseTabInstance = AddTabInstance("LOC_HUD_PURCHASE", OnPurchaseTabClick);
     m_ExchangeTabInstance = AddTabInstance("LOC_QD_EXCHANGE", OnExchangeTabClick);
-    if HasBetterQuickDeal() then
-        m_CycleTabInstance = AddTabInstance("LOC_BQD_CYCLE_TAB", OnCycleTabClick);
-    end
     m_BatchTabInstance = AddTabInstance("LOC_BF_BATCH_TAB", OnBatchTabClick);
 
     local desiredSize = (TAB_SIZE * m_NumOfTabs) + (TAB_PADDING * (m_NumOfTabs - 1));
