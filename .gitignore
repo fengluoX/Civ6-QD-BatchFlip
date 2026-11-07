@@ -1,0 +1,10 @@
+# Build / Steam Workshop packaging output
+dist/
+*.zip
+
+# Local helper / editor
+.DS_Store
+Thumbs.db
+*.user
+*.suo
+.vs/
