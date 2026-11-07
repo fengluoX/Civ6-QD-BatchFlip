@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+  <LocalizedText>
+    <Replace Tag="LOC_BF_BATCH_TAB" Language="zh_Hans_CN"><Text>批量倒卖</Text></Replace>
+    <Replace Tag="LOC_BF_AI_GOLD" Language="zh_Hans_CN"><Text>AI留金 ≥</Text></Replace>
+    <Replace Tag="LOC_BF_MY_GOLD" Language="zh_Hans_CN"><Text>自己留金 ≥</Text></Replace>
+    <Replace Tag="LOC_BF_MAX_DEALS" Language="zh_Hans_CN"><Text>成交上限</Text></Replace>
+    <Replace Tag="LOC_BF_DRYRUN" Language="zh_Hans_CN"><Text>仅预览</Text></Replace>
+    <Replace Tag="LOC_BF_COL_ACTION" Language="zh_Hans_CN"><Text>批量倒卖</Text></Replace>
+    <Replace Tag="LOC_BF_BTN_FAVOR" Language="zh_Hans_CN"><Text>开始倒卖</Text></Replace>
+    <Replace Tag="LOC_BF_BTN_AUTO_START" Language="zh_Hans_CN"><Text>启动自动执行</Text></Replace>
+    <Replace Tag="LOC_BF_BTN_AUTO_STOP" Language="zh_Hans_CN"><Text>停止自动执行</Text></Replace>
+    <Replace 勾选后点开始倒卖；自动执行每回合跑同样的勾选项。战略套利：从持有≥40的AI整批低价买入，整批卖给持有0的远方AI。</Text></Replace>
+    <Replace Tag="LOC_BF_LAST_RESULT" Language="zh_Hans_CN"><Text>执行结果</Text></Replace>
+    <Replace Tag="LOC_BF_BTN_EXPAND" Language="zh_Hans_CN"><Text>展开明细</Text></Replace>
+    <Replace Tag="LOC_BF_BTN_COLLAPSE" Language="zh_Hans_CN"><Text>收起明细</Text></Replace>
+    <Replace Tag="LOC_BF_HINT_LIVE" Language="zh_Hans_CN"><Text>勾选品类后点开始倒卖，或启动自动执行。</Text></Replace>
+    <Replace 品类</Text></Replace>
+    <Replace 外交支持套利</Text></Replace>
+    <Replace 战略资源套利</Text></Replace>
+  </LocalizedText>
+</GameData>

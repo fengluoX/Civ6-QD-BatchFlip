@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Context FontStyle="Stroke">
+  <Include File="qd_instances"/>
+
+  <Container ID="BatchRoot" Size="parent,parent" ClipChildren="1">
+    <Stack ID="BatchStack" StackGrowth="Bottom" Size="1100,parent" Anchor="C,T">
+
+      <Container Size="parent,36" Offset="0,8">
+        <Stack Anchor="C,C" StackGrowth="Right" Padding="10">
+          <Label ID="LblAiGold" Anchor="L,C" Style="BodyText16" String="AI留金 ≥" Color="210,200,180,255"/>
+          <Container Size="70,28">
+            <Grid Anchor="C,C" Size="parent,parent" Style="EditTextButton" Color="40,40,40,200"/>
+            <EditBox ID="EditAiGold" Anchor="C,C" Style="FontNormalBold16" FontStyle="Stroke" Size="64,24" NumberInput="1" MaxLength="5" EditMode="1" ConsumeMouse="1"/>
+          </Container>
+
+          <Label ID="LblMyGold" Anchor="L,C" Style="BodyText16" String="自己留金 ≥" Color="210,200,180,255"/>
+          <Container Size="70,28">
+            <Grid Anchor="C,C" Size="parent,parent" Style="EditTextButton" Color="40,40,40,200"/>
+            <EditBox ID="EditMyGold" Anchor="C,C" Style="FontNormalBold16" FontStyle="Stroke" Size="64,24" NumberInput="1" MaxLength="5" EditMode="1" ConsumeMouse="1"/>
+          </Container>
+
+          <Label ID="LblMaxDeals" Anchor="L,C" Style="BodyText16" String="成交上限" Color="210,200,180,255"/>
+          <Container Size="70,28">
+            <Grid Anchor="C,C" Size="parent,parent" Style="EditTextButton" Color="40,40,40,200"/>
+            <EditBox ID="EditMaxDeals" Anchor="C,C" Style="FontNormalBold16" FontStyle="Stroke" Size="64,24" NumberInput="1" MaxLength="5" EditMode="1" ConsumeMouse="1"/>
+          </Container>
+        </Stack>
+      </Container>
+
+      <Grid Anchor="C,T" Size="parent,38" Offset="0,8" Style="DiplomacyTitleBarGrid">
+        <Label ID="ColHeader" Anchor="C,C" Style="DiplomacyIntelHeader" String="批量倒卖" Offset="0,2"/>
+      </Grid>
+
+      <!-- Label text + bare checkbox (same DDS recipe as QD 通知), not String-on-CheckBox -->
+      <Container Size="parent,32" Offset="0,10">
+        <Stack Anchor="C,C" StackGrowth="Right" Padding="24">
+          <Label ID="LblManualCats" Anchor="L,C" Style="WhiteSemiBold14" String="品类" Color="165,160,150,255"/>
+
+          <Stack Anchor="L,C" StackGrowth="Right" Padding="4">
+            <Label ID="LblFavor" Anchor="L,C" Style="WhiteSemiBold14" String="外交支持套利" Color="210,200,180,255"/>
+            <CheckBox ID="ChkFavor" IsChecked="1" Style="WhiteSemiBold14"
+                      ButtonTexture="Controls_Checkbox.dds" ButtonSize="17,17"
+                      CheckTexture="Controls_Checkbox.dds" CheckSize="17,17" CheckTextureOffset="0,17"/>
+          </Stack>
+
+          <Stack Anchor="L,C" StackGrowth="Right" Padding="4">
+            <Label ID="LblStrategicArb" Anchor="L,C" Style="WhiteSemiBold14" String="战略资源套利" Color="210,200,180,255"/>
+            <CheckBox ID="ChkStrategicArb" IsChecked="1" Style="WhiteSemiBold14"
+                      ButtonTexture="Controls_Checkbox.dds" ButtonSize="17,17"
+                      CheckTexture="Controls_Checkbox.dds" CheckSize="17,17" CheckTextureOffset="0,17"/>
+          </Stack>
+        </Stack>
+      </Container>
+
+      <Container Size="parent,34" Offset="0,4">
+        <Stack Anchor="C,C" StackGrowth="Right" Padding="6">
+          <Label ID="LblDebug" Anchor="L,C" Style="WhiteSemiBold14" String="测试" Color="165,160,150,255"/>
+          <GridButton ID="BtnAddHorses" Style="MainButton" Size="84,30" String="马+40"/>
+          <GridButton ID="BtnAddIron" Style="MainButton" Size="84,30" String="铁+40"/>
+          <GridButton ID="BtnAddNiter" Style="MainButton" Size="84,30" String="硝石+40"/>
+          <GridButton ID="BtnAddCoal" Style="MainButton" Size="84,30" String="煤+40"/>
+          <GridButton ID="BtnAddOil" Style="MainButton" Size="84,30" String="石油+40"/>
+          <GridButton ID="BtnAddAluminum" Style="MainButton" Size="84,30" String="铝+40"/>
+          <GridButton ID="BtnAddUranium" Style="MainButton" Size="84,30" String="铀+40"/>
+          <GridButton ID="BtnAiStock" Style="MainButton" Size="120,30" String="AI库存"/>
+        </Stack>
+      </Container>
+
+      <Container Size="parent,110" Offset="0,8">
+        <Stack Anchor="C,C" StackGrowth="Bottom" Padding="8">
+          <Stack Anchor="C,T" StackGrowth="Right" Padding="12">
+            <GridButton ID="BtnFavor" Style="MainButton" Size="280,50" String="开始倒卖"/>
+            <GridButton ID="BtnAutoRun" Style="MainButton" Size="280,50" String="启动自动执行"/>
+          </Stack>
+          <Label ID="ActionDesc" Anchor="C,T" Align="center" Style="FontNormal14" Size="1000,36" WrapWidth="1000"
+                 String="勾选后点开始倒卖；自动执行每回合跑同样的勾选项。" Color="165,160,150,255"/>
+        </Stack>
+      </Container>
+
+      <Grid Anchor="C,T" Size="parent,38" Offset="0,8" Style="DiplomacyTitleBarGrid">
+        <Label ID="ResultHeader" Anchor="L,C" Style="DiplomacyIntelHeader" String="执行结果" Offset="16,2"/>
+        <GridButton ID="BtnToggleDetail" Style="MainButton" Size="160,28" Anchor="R,C" Offset="12,0"
+                    String="展开明细" Disabled="1"/>
+      </Grid>
+
+      <Container ID="LogFrame" Size="parent,200" Offset="0,6" ClipChildren="1">
+        <ScrollPanel ID="LogScroll" Anchor="C,T" Size="parent,parent" Vertical="1" AutoScrollBar="1" ClipChildren="1">
+          <ScrollBar Style="Slider_Blue" Anchor="R,C" AnchorSide="O,I" Offset="6,0"/>
+          <Stack ID="LogStack" Anchor="L,T" Offset="4,4" StackGrowth="Bottom">
+            <Label ID="LogLabel" Anchor="L,T" Align="left" Style="BodyText16" Size="1020,24" WrapWidth="1020"
+                   String="点击开始倒卖。结果会显示支持/资源流向。" Color="185,205,165,255"/>
+          </Stack>
+        </ScrollPanel>
+      </Container>
+
+    </Stack>
+  </Container>
+</Context>

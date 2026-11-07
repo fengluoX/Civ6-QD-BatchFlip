@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+  <EnglishText>
+    <Row Tag="LOC_BF_BATCH_TAB"><Text>Batch Flip</Text></Row>
+    <Row Tag="LOC_BF_AI_GOLD"><Text>Keep AI gold ≥</Text></Row>
+    <Row Tag="LOC_BF_MY_GOLD"><Text>Keep my gold ≥</Text></Row>
+    <Row Tag="LOC_BF_MAX_DEALS"><Text>Deal cap</Text></Row>
+    <Row Tag="LOC_BF_DRYRUN"><Text>Preview only</Text></Row>
+    <Row Tag="LOC_BF_COL_ACTION"><Text>Batch Flip</Text></Row>
+    <Row Tag="LOC_BF_BTN_FAVOR"><Text>Start Flip</Text></Row>
+    <Row Tag="LOC_BF_BTN_AUTO_START"><Text>Enable Auto</Text></Row>
+    <Row Tag="LOC_BF_BTN_AUTO_STOP"><Text>Stop Auto</Text></Row>
+    <Row Tick categories, then Start Flip. Auto runs the same selection each turn. Strategic arb buys bulk from AIs holding 40+ and sells whole lots to far AIs holding 0.</Text></Row>
+    <Row Tag="LOC_BF_LAST_RESULT"><Text>Result</Text></Row>
+    <Row Tag="LOC_BF_BTN_EXPAND"><Text>Show details</Text></Row>
+    <Row Tag="LOC_BF_BTN_COLLAPSE"><Text>Hide details</Text></Row>
+    <Row Tag="LOC_BF_HINT_PREVIEW"><Text>Preview only.</Text></Row>
+    <Row Tag="LOC_BF_HINT_LIVE"><Text>Light up categories, then Start Flip — or enable Auto.</Text></Row>
+    <Row Categories</Text></Row>
+    <Row Favor arb</Text></Row>
+    <Row Tag="LOC_BF_CHK_STRATEGIC_ARB"><Text>Strategic arb</Text></Row>
+  </EnglishText>
+</GameData>
