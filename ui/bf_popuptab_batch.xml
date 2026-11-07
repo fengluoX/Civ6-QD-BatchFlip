@@ -52,20 +52,6 @@
         </Stack>
       </Container>
 
-      <Container Size="parent,34" Offset="0,4">
-        <Stack Anchor="C,C" StackGrowth="Right" Padding="6">
-          <Label ID="LblDebug" Anchor="L,C" Style="WhiteSemiBold14" String="测试" Color="165,160,150,255"/>
-          <GridButton ID="BtnAddHorses" Style="MainButton" Size="84,30" String="马+40"/>
-          <GridButton ID="BtnAddIron" Style="MainButton" Size="84,30" String="铁+40"/>
-          <GridButton ID="BtnAddNiter" Style="MainButton" Size="84,30" String="硝石+40"/>
-          <GridButton ID="BtnAddCoal" Style="MainButton" Size="84,30" String="煤+40"/>
-          <GridButton ID="BtnAddOil" Style="MainButton" Size="84,30" String="石油+40"/>
-          <GridButton ID="BtnAddAluminum" Style="MainButton" Size="84,30" String="铝+40"/>
-          <GridButton ID="BtnAddUranium" Style="MainButton" Size="84,30" String="铀+40"/>
-          <GridButton ID="BtnAiStock" Style="MainButton" Size="120,30" String="AI库存"/>
-        </Stack>
-      </Container>
-
       <Container Size="parent,110" Offset="0,8">
         <Stack Anchor="C,C" StackGrowth="Bottom" Padding="8">
           <Stack Anchor="C,T" StackGrowth="Right" Padding="12">

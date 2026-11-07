@@ -52,7 +52,7 @@ local m_AutoDeferTicks = 0;
 local AUTO_DEFER_TICKS = 60;
 local LOG_VIEW_W = 1100;
 local LOG_VIEW_H = 240; -- minimum
-local LOG_VIEW_TOP = 340; -- sum of the fixed rows (size + offset) above LogFrame in the XML
+local LOG_VIEW_TOP = 302; -- sum of the fixed rows (size + offset) above LogFrame in the XML
 
 -- ver bump resets enabled so hot-reload / new session never inherits "on".
 if BatchFlipAutoState == nil or BatchFlipAutoState.ver ~= 38 then
@@ -489,88 +489,6 @@ local function EnsureAutoHandlers()
     print("BatchFlip: auto-run handlers registered once");
 end
 
-local DEBUG_ADD_AMOUNT = 40;
-local DEBUG_RESOURCES = {
-    { btn = "BtnAddHorses", type = "RESOURCE_HORSES" },
-    { btn = "BtnAddIron", type = "RESOURCE_IRON" },
-    { btn = "BtnAddNiter", type = "RESOURCE_NITER" },
-    { btn = "BtnAddCoal", type = "RESOURCE_COAL" },
-    { btn = "BtnAddOil", type = "RESOURCE_OIL" },
-    { btn = "BtnAddAluminum", type = "RESOURCE_ALUMINUM" },
-    { btn = "BtnAddUranium", type = "RESOURCE_URANIUM" },
-};
-
-local function OnDebugAddResource(resourceType)
-    local row = GameInfo.Resources[resourceType];
-    local dbg = ExposedMembers ~= nil and ExposedMembers.BatchFlipDebug or nil;
-    if row == nil then return; end
-    if dbg == nil or dbg.AddResource == nil then
-        SetLog("测试脚本未加载：请完全退出游戏后重开（需要 Gameplay 脚本）。");
-        return;
-    end
-    local name = BatchFlipDealUtil.GetResourceName(row.Index);
-    local ok, now, cap, msg = dbg.AddResource(Game.GetLocalPlayer(), row.Index, DEBUG_ADD_AMOUNT);
-    if (cap or 0) <= 0 then cap = BatchFlipDealUtil.GetStockpileCap(Game.GetLocalPlayer(), row.Index); end
-    if ok then
-        SetLog(string.format("%s +%d → 现有 %d / 上限 %d %s", name, DEBUG_ADD_AMOUNT, now or 0, cap or 0, msg or ""));
-    else
-        SetLog(string.format("%s 添加失败：%s", name, tostring(msg)));
-    end
-end
-
--- Per-AI strategic stock: amount/cap and how much it could sell us right now.
-local function OnDebugAiStock()
-    local localID = Game.GetLocalPlayer();
-    local lines = {};
-    local mine = {};
-    for _, r in ipairs(DEBUG_RESOURCES) do
-        local row = GameInfo.Resources[r.type];
-        if row ~= nil then
-            table.insert(mine, string.format("%s %d/%d", BatchFlipDealUtil.GetResourceName(row.Index),
-                BatchFlipDealUtil.GetResourceAmount(localID, row.Index),
-                BatchFlipDealUtil.GetStockpileCap(localID, row.Index)));
-        end
-    end
-    table.insert(lines, "我方：" .. table.concat(mine, "  "));
-    BatchFlipDealUtil.ForEachMetAi(function(aiID)
-        local parts = {};
-        for _, r in ipairs(DEBUG_RESOURCES) do
-            local row = GameInfo.Resources[r.type];
-            if row ~= nil then
-                local amt = BatchFlipDealUtil.GetResourceAmount(aiID, row.Index);
-                local cap = BatchFlipDealUtil.GetStockpileCap(aiID, row.Index);
-                local sell = BatchFlipDealUtil.MaxResourceTradable(aiID, localID, row.Index);
-                table.insert(parts, string.format("%s %d/%d(可卖%d)", BatchFlipDealUtil.GetResourceName(row.Index), amt, cap, sell));
-            end
-        end
-        local p = Players[aiID];
-        local gold, gpt = 0, 0;
-        pcall(function()
-            gold = math.floor(p:GetTreasury():GetGoldBalance());
-            gpt = math.floor(p:GetTreasury():GetGoldYield() - p:GetTreasury():GetTotalMaintenance());
-        end);
-        table.insert(lines, string.format("%s 金%d 回合金%+d：%s", BatchFlipDealUtil.GetAiName(aiID), gold, gpt,
-            table.concat(parts, "  ")));
-    end);
-    SetLog(table.concat(lines, "[NEWLINE]"));
-end
-
-local function BindDebugButtons()
-    for _, r in ipairs(DEBUG_RESOURCES) do
-        local btn = Controls[r.btn];
-        local row = GameInfo.Resources[r.type];
-        if btn ~= nil then
-            if row ~= nil then
-                btn:SetText(BatchFlipDealUtil.GetResourceName(row.Index) .. "+" .. DEBUG_ADD_AMOUNT);
-            end
-            btn:RegisterCallback(Mouse.eLClick, function() OnDebugAddResource(r.type); end);
-        end
-    end
-    if Controls.BtnAiStock ~= nil then
-        Controls.BtnAiStock:RegisterCallback(Mouse.eLClick, OnDebugAiStock);
-    end
-end
-
 function OnShowTab(tabType)
     if tabType == BF_TAB_BATCH then
         ContextPtr:SetHide(false);
@@ -629,7 +547,6 @@ function OnInit(isReload)
     end
     BindCategoryToggle(Controls.ChkFavor);
     BindCategoryToggle(Controls.ChkStrategicArb);
-    BindDebugButtons();
     if isReload and not ContextPtr:IsHidden() then
         OnShowTab(BF_TAB_BATCH);
     end

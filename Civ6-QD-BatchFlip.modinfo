@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Mod id="235f7f9e-a629-47ac-af01-b1edb7e45dfd" version="57">
+<Mod id="235f7f9e-a629-47ac-af01-b1edb7e45dfd" version="58">
   <Properties>
     <Name>QD 批量倒卖</Name>
     <Teaser>快速交易：外交支持 / 战略资源批量套利</Teaser>
-    <Description>Quick Deals 扩展：外交支持廉价窗倒卖；战略资源买空→0库存双倍价卖回→再买回的循环套利。含测试按钮。</Description>
+    <Description>Quick Deals 扩展：外交支持廉价窗倒卖；战略资源买空→0库存双倍价卖回→再买回的循环套利。</Description>
     <Authors>Civ6-QD-BatchFlip</Authors>
     <CompatibleVersions>2.0</CompatibleVersions>
     <AffectsSavedGames>0</AffectsSavedGames>
@@ -38,10 +38,6 @@
       <File>ui/BatchFlipFavor.lua</File>
     </ImportFiles>
 
-    <AddGameplayScripts id="bf_debug_gameplay">
-      <File>scripts/BatchFlipDebugGameplay.lua</File>
-    </AddGameplayScripts>
-
     <UpdateText id="bf_text">
       <File>text/bf_text.xml</File>
       <File>text/bf_translations_text.xml</File>
@@ -58,7 +54,6 @@
     <File>ui/BatchFlipStrategic.lua</File>
     <File>ui/BatchFlipRunner.lua</File>
     <File>ui/BatchFlipFavor.lua</File>
-    <File>scripts/BatchFlipDebugGameplay.lua</File>
     <File>text/bf_text.xml</File>
     <File>text/bf_translations_text.xml</File>
   </Files>
