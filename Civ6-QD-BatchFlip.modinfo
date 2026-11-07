@@ -2,8 +2,8 @@
 <Mod id="235f7f9e-a629-47ac-af01-b1edb7e45dfd" version="58">
   <Properties>
     <Name>QD 批量倒卖</Name>
-    <Teaser>快速交易：外交支持 / 战略资源批量套利</Teaser>
-    <Description>Quick Deals 扩展：外交支持廉价窗倒卖；战略资源买空→0库存双倍价卖回→再买回的循环套利。</Description>
+    <Teaser>Quick Deals 扩展：外交支持 / 战略资源批量套利</Teaser>
+    <Description>依赖 Quick Deals。在快速交易弹窗新增「批量倒卖」页签，按原版 AI 估价自动批量成交：&#xA;&#xA;【外交支持】抓住廉价窗买入，再逐点卖回（需风云变幻；每回合每 AI 买卖约各 20 点）。&#xA;&#xA;【战略资源】利用库存阈值：≥40 贱卖整堆、=0 高价买进约 40、1～39 先补到 40；买空→溢价卖回→再买回循环对倒，亏损则停该 AI。&#xA;&#xA;可调 AI 留金 / 自己留金 / 成交上限；支持每回合自动执行。不修改 AI 报价公式，不影响存档结构。</Description>
     <Authors>Civ6-QD-BatchFlip</Authors>
     <CompatibleVersions>2.0</CompatibleVersions>
     <AffectsSavedGames>0</AffectsSavedGames>

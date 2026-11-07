@@ -132,15 +132,21 @@ bash ./scripts/pack-workshop.sh
 | 路径 | 用途 |
 |------|------|
 | `dist/workshop/Civ6-QD-BatchFlip/` | 给 **Steam Workshop Uploader** 选其中的 `.modinfo` |
+| `dist/steam/preview-512.jpg` | Uploader **Select Image...** 预览图 |
+| `dist/steam/STEAM_DESCRIPTION.txt` | 上传后粘贴到工坊简介 |
+| `dist/steam/UPLOAD.txt` | 上传步骤速查 |
 | `dist/Civ6-QD-BatchFlip-vNN.zip` | GitHub Release / 手动安装 |
+
+源素材在仓库 `workshop/`（预览图 + 简介文案）；打包时复制到 `dist/steam/`，**不会**打进游戏模组目录。
 
 上传步骤简述：
 
 1. 安装 Steam 工具 **Sid Meier's Civilization VI Development Tools**（`steam://install/404350`）
-2. 启动 → **Steam Workshop Uploader**
-3. Upload → 选择 `dist/workshop/Civ6-QD-BatchFlip\Civ6-QD-BatchFlip.modinfo`
-4. 填标题、简介、封面；依赖里挂上 Quick Deals
-5. 可见性可先「仅好友 / 不公开」，测完再公开
+2. 运行打包脚本，再启动 → **Steam Workshop Uploader**
+3. Upload → 选 `dist/workshop/Civ6-QD-BatchFlip\Civ6-QD-BatchFlip.modinfo`
+4. Select Image → 选 `dist/steam\preview-512.jpg`；标签建议 `UI` / `Gameplay` / `Gathering Storm`
+5. 上传后到工坊页编辑简介，粘贴 `dist/steam\STEAM_DESCRIPTION.txt`；依赖挂上 Quick Deals
+6. 可见性可先「仅好友 / 不公开」，测完再公开
 
 **注意：** 更新工坊时不要改 `.modinfo` 里的 `Mod id`；只需提高 `version` 后重新打包上传。
 
@@ -152,6 +158,7 @@ bash ./scripts/pack-workshop.sh
 Civ6-QD-BatchFlip.modinfo   # 模组清单（版本号、依赖、加载项）
 ui/                         # Lua / 页签 XML
 text/                       # 本地化
+workshop/                   # Steam 预览图 + 简介文案（源）
 scripts/pack-workshop.*     # 生成上传产物
 ```
 
